@@ -81,8 +81,7 @@ DATABASES = {
     }
 }
 
-MONGO_CONNECTION_STRING = "mongodb+srv://LuchoR27:1ma8197PUUXlM90l@customer.j5a20.mongodb.net/Customer" \
-                          "?retryWrites=true&w=majority"
+MONGO_CONNECTION_STRING = 'mongodb://127.0.0.1:27017'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

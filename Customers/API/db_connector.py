@@ -44,8 +44,8 @@ class MongoDB_Connector():
         calculate_speed(self.save_customers, "fetching and processing customers data", path)
 
     def read(self, data, chunk_size=10000):
-        #Complete fetching customer data in 296.4673912525177s = 4min 56s
-        #3526301 people created.
+        # Complete fetching and processing customers data in 200.45847725868225 s
+        # 4916447 customers added.
 
         customers = []
         counter = 0
