@@ -131,3 +131,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Source data
+DWH_CUSTOMER_DATA_202104160010.csv
