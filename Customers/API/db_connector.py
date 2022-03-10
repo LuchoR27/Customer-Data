@@ -100,3 +100,11 @@ class MongoDB_Connector():
             data.seek(0)
             for block in self.read(data):
                 self.db.Customers.insert_many(block)
+
+    def get_cities(self):
+        cities = self.db.Customers.distinct("CITY")
+        return cities
+
+    def get_provinces(self):
+        provinces = self.db.Customers.distinct("PROVINCE")
+        return provinces
