@@ -108,3 +108,11 @@ class MongoDB_Connector():
     def get_provinces(self):
         provinces = self.db.Customers.distinct("PROVINCE")
         return provinces
+
+    def get_csv_data(self, city=None, province=None):
+        query = {}
+        if city is not None:
+            query['CITY'] = city
+        if province is not None:
+            query['PROVINCE'] = province
+        return self.db.Customers.find(query)

@@ -21,10 +21,9 @@
         </h1>
         <form action="{% url 'download_csv' %}" method="get" class="form-inline">
             <label class="sr-only" for="province_input">Provincia</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="province_input" placeholder="">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="province" id="province_input" placeholder="">
             <label class="sr-only" for="city_input">Ciudad</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="city_input" placeholder="">
-
+            <input type="text" class="form-control mb-2 mr-sm-2" name="city" id="city_input" placeholder="">
             <button type="submit" class="btn btn-primary mb-2">Descargar CSV</button>
         </form>
         <div class="row">
