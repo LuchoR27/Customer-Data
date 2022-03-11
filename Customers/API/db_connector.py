@@ -100,12 +100,13 @@ class MongoDB_Connector():
                 self.db.Customers.insert_many(block)
 
     def get_cities(self):
-        cities = self.db.Customers.distinct("CITY")
-        return cities
+        return self.db.Customers.distinct("CITY")
+
+    def get_cities_province(self, province):
+        return self.db.Customers.distinct('CITY', {'PROVINCE': province})
 
     def get_provinces(self):
-        provinces = self.db.Customers.distinct("PROVINCE")
-        return provinces
+        return self.db.Customers.distinct("PROVINCE")
 
     def get_csv_data(self, city=None, province=None):
         query = {}

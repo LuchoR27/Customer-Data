@@ -1,7 +1,8 @@
 import io
 import csv
+import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from API.db_connector import MongoDB_Connector
@@ -11,8 +12,7 @@ db = MongoDB_Connector()
 
 def index(request):
     return render(request, "index.html", {
-        "provinces": db.get_provinces(),
-        "cities": db.get_cities()
+        "provinces": db.get_provinces()
     })
 
 
@@ -38,3 +38,10 @@ def download_csv(request):
             wr.writerow(customer.values())
         response['Content-Disposition'] = 'attachment; filename=data.csv'
         return response
+
+
+def get_cities(request):
+    if request.method == 'GET':
+        province = request.GET.get('province')
+        cities = list(db.get_cities_province(province))
+        return JsonResponse(json.dumps(cities), safe=False)
