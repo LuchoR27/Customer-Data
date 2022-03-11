@@ -51,13 +51,11 @@ class MongoDB_Connector():
         counter = 0
         total = 0
 
-        for customer in data:
-
-            customer = customer.rstrip('\n').split(',')
+        for customer in csv.reader(data, quotechar='"', delimiter=',',
+                                   quoting=csv.QUOTE_ALL, skipinitialspace=True):
             if len(customer) >= 23:
                 email_valid = customer[5]
                 if email_valid == 'Y':
-
                     row = {
                         "LEGAL_IDENTIFIER": customer[1],
                         "SCV_EMAIL_ADDRESS": customer[4],

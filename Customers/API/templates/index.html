@@ -19,19 +19,12 @@
         <h1>
             DWH Customer Data
         </h1>
-        <form action="{% url 'download_csv' %}" method="get" class="form-inline">
-            <label class="sr-only" for="province_input">Provincia</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" name="province" id="province_input" placeholder="">
-            <label class="sr-only" for="city_input">Ciudad</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" name="city" id="city_input" placeholder="">
-            <button type="submit" class="btn btn-primary mb-2">Descargar CSV</button>
-        </form>
         <div class="row">
             <div class="col-sm">
                 <h2>
                     Provincias
                 </h2>
-                <ul class="list-group">
+                <ul id="provinces-container" class="list-group">
                     {% for province in provinces %}
                         <li class="list-group-item">{{province}}</li>
                     {% endfor %}
@@ -41,7 +34,7 @@
                 <h2>
                     Ciudades
                 </h2>
-                <ul class="list-group">
+                <ul id="cities-container" class="list-group">
                     {% for city in cities %}
                         <li class="list-group-item">{{city}}</li>
                     {% endfor %}

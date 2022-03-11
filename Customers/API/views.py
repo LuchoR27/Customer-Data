@@ -22,19 +22,19 @@ def download_csv(request):
                "CUSTOMER_GENDER", "CUSTOMER_TITLE", "CUSTOMER_FORENAME", "CUSTOMER_SURNAME", "BIRTH_DATE", "ROAD_TYPE",
                "STREET", "NUM", "FLOOR", "CITY", "PROVINCE", "POSTAL_CODE"]
     if request.method == 'GET':
+        city = request.GET.get('city')
+        province = request.GET.get('province')
         query_params = {}
-        if request.GET.get('province'):
-            query_params['province'] = request.GET.get('province')
-        if request.GET.get('city'):
-            query_params['city'] = request.GET.get('city')
+        if province:
+            query_params['province'] = province
+        if city:
+            query_params['city'] = city
         qs = db.get_csv_data(**query_params)
         # Create CSV with queryset
-        buffer = io.StringIO()
-        wr = csv.writer(buffer, quoting=csv.QUOTE_ALL)
+        response = HttpResponse(content_type='text/csv')
+        wr = csv.writer(response, quoting=csv.QUOTE_ALL)
         wr.writerow(headers)
         for customer in qs:
             wr.writerow(customer.values())
-        buffer.seek(0)
-        response = HttpResponse(buffer, content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=data.csv'
         return response
